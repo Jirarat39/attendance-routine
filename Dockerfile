@@ -19,9 +19,9 @@ RUN echo "Restoring dependencies..." && \
 FROM node:20-alpine AS frontend-build
 WORKDIR /frontend
 
-# Install dependencies - with better error handling
+# Install dependencies
 RUN npm install -g pnpm@9.15.0
-COPY frontend/package.json frontend/pnpm-lock.yaml ./
+COPY frontend/package.json ./
 RUN pnpm install
 COPY frontend/ .
 RUN pnpm run build
