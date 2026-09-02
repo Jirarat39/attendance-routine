@@ -59,7 +59,9 @@ function serveFile(request, response) {
 }
 
 http.createServer((request, response) => {
-  if (request.url.startsWith('/api/')) {
+  const apiRequestPath = request.url.replace(/^\/TEST01\/HRReportScheduler(?=\/api\/)/, '');
+  if (apiRequestPath.startsWith('/api/')) {
+    request.url = apiRequestPath;
     proxyApi(request, response);
     return;
   }
