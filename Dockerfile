@@ -19,12 +19,11 @@ RUN echo "Restoring dependencies..." && \
 FROM node:20-alpine AS frontend-build
 WORKDIR /frontend
 
-# Install dependencies
-RUN npm install -g pnpm@9.15.0
+# Install dependencies using npm
 COPY frontend/package.json ./
-RUN pnpm install
+RUN npm install
 COPY frontend/ .
-RUN pnpm run build
+RUN npm run build
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
