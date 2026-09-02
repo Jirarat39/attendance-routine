@@ -14,14 +14,32 @@ builder.Logging.AddConsole();
 
 var connectionString = builder.Configuration.GetConnectionString("AttendanceDb") ?? string.Empty;
 
+// Log warning if connection string is empty
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    builder.Logging.AddConsole();
+    var logger = builder.Services.BuildServiceProvider()?.GetService<ILogger<Program>>();
+    System.Console.WriteLine("WARNING: Database connection string is empty. Database operations will not work until ConnectionStrings__AttendanceDb is configured.");
+}
+
 builder.Services.Configure<DatabaseMappingOptions>(builder.Configuration.GetSection(DatabaseMappingOptions.SectionName));
 builder.Services.Configure<ReportOptions>(builder.Configuration.GetSection(ReportOptions.SectionName));
 builder.Services.AddDbContext<AttendanceDbContext>(options =>
-    options.UseSqlServer(connectionString, sql =>
+{
+    if (!string.IsNullOrWhiteSpace(connectionString))
     {
-        sql.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
-        sql.CommandTimeout(60);
-    }));
+        options.UseSqlServer(connectionString, sql =>
+        {
+            sql.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
+            sql.CommandTimeout(60);
+        });
+    }
+    else
+    {
+        // Use in-memory database as fallback when connection string is not available
+        options.UseInMemoryDatabase("AttendanceDb_Fallback");
+    }
+});
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<ReportSettingsStore>();
 builder.Services.AddScoped<AuthService>();
