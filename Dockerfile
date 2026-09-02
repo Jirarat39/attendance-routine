@@ -21,8 +21,8 @@ WORKDIR /frontend
 
 # Install dependencies - with better error handling
 RUN npm install -g pnpm@9.15.0
-COPY frontend/package.json frontend/pnpm-lock.yaml* ./
-RUN pnpm install --frozen-lockfile || pnpm install
+COPY frontend/package.json frontend/pnpm-lock.yaml ./
+RUN pnpm install
 COPY frontend/ .
 RUN pnpm run build
 
