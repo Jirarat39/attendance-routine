@@ -147,9 +147,12 @@ public sealed partial class DatabaseSchemaResolver(
             _options.AttendanceEmployeeKeyColumn ?? "EmployeeId",
             _options.CheckInColumn ?? "CheckIn",
             _options.CheckOutColumn ?? "CheckOut",
-            _options.AttendanceTimestampColumn ?? "AttendanceDate",
             _options.EmployeeKeyColumn ?? "EmployeeId",
-            _options.EmployeeNameColumn ?? "Name"
+            _options.EmployeeCodeColumn ?? "EmployeeCode",
+            _options.EmployeeNameColumn ?? "Name",
+            null,  // EmployeeFirstNameEnColumn
+            null,  // EmployeeLastNameEnColumn
+            _options.DepartmentColumn ?? null  // DepartmentColumn
         );
     }
 
