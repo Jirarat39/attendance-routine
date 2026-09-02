@@ -140,19 +140,21 @@ public sealed partial class DatabaseSchemaResolver(
     /// </summary>
     private ResolvedDatabaseSchema CreateFallbackSchema(string attendanceTableName, string employeeTableName)
     {
+        // Use defaults for in-memory mode - these won't actually be used for real data operations
+        // since in-memory database won't have the proper schema
         return new ResolvedDatabaseSchema(
-            QuoteQualified(_options.AttendanceTable),
-            QuoteQualified(_options.EmployeeTable),
-            _options.AttendanceIdColumn ?? "AttendanceId",
-            _options.AttendanceEmployeeKeyColumn ?? "EmployeeId",
-            _options.CheckInColumn ?? "CheckIn",
-            _options.CheckOutColumn ?? "CheckOut",
-            _options.EmployeeKeyColumn ?? "EmployeeId",
-            _options.EmployeeCodeColumn ?? "EmployeeCode",
-            _options.EmployeeNameColumn ?? "Name",
-            null,  // EmployeeFirstNameEnColumn
-            null,  // EmployeeLastNameEnColumn
-            _options.DepartmentColumn ?? null  // DepartmentColumn
+            "[dbo].[Attendances]",
+            "[dbo].[Employees]",
+            "AttendanceId",
+            "EmployeeId",
+            "CheckIn",
+            "CheckOut",
+            "EmployeeId",
+            "EmployeeCode",
+            "Name",
+            null,
+            null,
+            null
         );
     }
 
