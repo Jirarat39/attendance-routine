@@ -16,7 +16,6 @@ services:
           name: attendance-db
           property: connectionString
     healthCheckPath: /api/health
-    healthCheckInterval: 30
 
 databases:
   - name: attendance-db
