@@ -1,7 +1,4 @@
-using AttendanceRoutine.Api.Data;
-using AttendanceRoutine.Api.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AttendanceRoutine.Api.Controllers;
 
