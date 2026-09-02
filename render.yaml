@@ -22,4 +22,4 @@ databases:
     databaseName: attendance_db
     user: attendance_user
     region: oregon
-    plan: standard
+    plan: starter
