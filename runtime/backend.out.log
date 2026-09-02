@@ -1,0 +1,10 @@
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://0.0.0.0:5187
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\OneDrive - CDS SOLUTION CORP.,COMPANY LIMITED\Documents\Report\backend\AttendanceRoutine.Api
+info: AttendanceRoutine.Api.Services.DailyReportWorker[0]
+      Daily Excel report created: D:\OneDrive - CDS SOLUTION CORP.,COMPANY LIMITED\Documents\Report\Attendance_Report\Attendance_2026-07-22.xlsx

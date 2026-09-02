@@ -1,0 +1,30 @@
+
+  VITE v6.4.3  ready in 2024 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.20.37:5173/
+15:41:15 [vite] (client) hmr update /src/App.tsx
+15:41:22 [vite] (client) ✨ new dependencies optimized: @mui/icons-material/RestartAltRounded
+15:41:22 [vite] (client) ✨ optimized dependencies changed. reloading
+15:41:23 [vite] (client) hmr update /src/App.tsx
+15:46:38 [vite] (client) hmr update /src/App.tsx
+15:46:39 [vite] (client) ✨ new dependencies optimized: @mui/icons-material/CloseRounded
+15:46:39 [vite] (client) ✨ optimized dependencies changed. reloading
+15:48:05 [vite] (client) hmr update /src/App.tsx
+15:51:54 [vite] (client) hmr update /src/App.tsx
+15:59:12 [vite] (client) hmr update /src/App.tsx
+16:10:27 [vite] (client) hmr update /src/App.tsx
+16:10:51 [vite] (client) hmr update /src/App.tsx
+16:10:53 [vite] (client) ✨ new dependencies optimized: @mui/icons-material/DashboardRounded, @mui/icons-material/SettingsRounded, @mui/icons-material/AutoModeRounded, @mui/icons-material/FolderRounded, @mui/icons-material/SaveRounded, @mui/icons-material/ScheduleRounded
+16:10:53 [vite] (client) ✨ optimized dependencies changed. reloading
+16:33:32 [vite] (client) hmr update /src/App.tsx, /src/SettingsPage.tsx
+16:33:33 [vite] (client) hmr update /src/SettingsPage.tsx
+16:33:34 [vite] (client) ✨ new dependencies optimized: @mui/icons-material/ArrowUpwardRounded, @mui/icons-material/CheckRounded, @mui/icons-material/FolderOpenRounded
+16:33:34 [vite] (client) ✨ optimized dependencies changed. reloading
+16:41:40 [vite] (client) hmr update /src/SettingsPage.tsx
+16:54:32 [vite] (client) hmr update /src/SettingsPage.tsx
+17:56:46 [vite] (client) hmr update /src/App.tsx, /src/SettingsPage.tsx
+17:58:07 [vite] (client) hmr update /src/App.tsx
+17:58:09 [vite] (client) ✨ new dependencies optimized: @mui/icons-material/LogoutRounded, @mui/icons-material/PersonRounded, @mui/icons-material/LoginRounded, @mui/icons-material/LockOutlined, @mui/icons-material/PersonOutlineRounded, @mui/icons-material/ShieldOutlined, @mui/icons-material/VisibilityOffOutlined, @mui/icons-material/VisibilityOutlined
+17:58:09 [vite] (client) ✨ optimized dependencies changed. reloading
+17:58:14 [vite] (client) hmr update /src/App.tsx

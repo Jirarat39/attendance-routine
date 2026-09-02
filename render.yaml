@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: attendance-routine
+    env: docker
+    plan: standard
+    region: oregon
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:5187
+      - key: PORT
+        value: "10000"
+      - key: ConnectionStrings__AttendanceDb
+        fromDatabase:
+          name: attendance-db
+          property: connectionString
+    healthCheckPath: /api/health
+    healthCheckInterval: 30
+
+databases:
+  - name: attendance-db
+    databaseName: attendance_db
+    user: attendance_user
+    region: oregon
+    plan: standard

@@ -1,0 +1,11 @@
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/.env
+**/node_modules
+**/npm-debug.log
+**/pnpm-debug.log
+**/bin
+**/obj
+.DS_Store

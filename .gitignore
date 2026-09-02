@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+.vs/
+.vscode/
+.idea/
+.tools/
+backend/AttendanceRoutine.Api/appsettings.Local.json
+backend/AttendanceRoutine.Api/Exports/
+backend/AttendanceRoutine.Api/App_Data/
+*.user
+*.suo
