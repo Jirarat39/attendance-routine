@@ -17,9 +17,7 @@ var connectionString = builder.Configuration.GetConnectionString("AttendanceDb")
 // Log warning if connection string is empty
 if (string.IsNullOrWhiteSpace(connectionString))
 {
-    builder.Logging.AddConsole();
-    var logger = builder.Services.BuildServiceProvider()?.GetService<ILogger<Program>>();
-    System.Console.WriteLine("WARNING: Database connection string is empty. Database operations will not work until ConnectionStrings__AttendanceDb is configured.");
+    System.Console.WriteLine("WARNING: Database connection string is empty. Using in-memory database as fallback.");
 }
 
 builder.Services.Configure<DatabaseMappingOptions>(builder.Configuration.GetSection(DatabaseMappingOptions.SectionName));
