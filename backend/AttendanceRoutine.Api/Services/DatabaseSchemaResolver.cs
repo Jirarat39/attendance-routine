@@ -28,6 +28,13 @@ public sealed partial class DatabaseSchemaResolver(
     {
         var attendanceTableName = LastIdentifier(_options.AttendanceTable);
         var employeeTableName = LastIdentifier(_options.EmployeeTable);
+        
+        // Check if using in-memory database (InMemory doesn't support INFORMATION_SCHEMA)
+        if (db.Database.IsInMemory())
+        {
+            return CreateFallbackSchema(attendanceTableName, employeeTableName);
+        }
+        
         var connection = db.Database.GetDbConnection();
         await db.Database.OpenConnectionAsync(cancellationToken);
 
@@ -126,6 +133,24 @@ public sealed partial class DatabaseSchemaResolver(
         parameter.ParameterName = name;
         parameter.Value = value;
         command.Parameters.Add(parameter);
+    }
+
+    /// <summary>
+    /// Create a fallback schema for in-memory database (which doesn't support INFORMATION_SCHEMA queries)
+    /// </summary>
+    private ResolvedDatabaseSchema CreateFallbackSchema(string attendanceTableName, string employeeTableName)
+    {
+        return new ResolvedDatabaseSchema(
+            QuoteQualified(_options.AttendanceTable),
+            QuoteQualified(_options.EmployeeTable),
+            _options.AttendanceIdColumn ?? "AttendanceId",
+            _options.AttendanceEmployeeKeyColumn ?? "EmployeeId",
+            _options.CheckInColumn ?? "CheckIn",
+            _options.CheckOutColumn ?? "CheckOut",
+            _options.AttendanceTimestampColumn ?? "AttendanceDate",
+            _options.EmployeeKeyColumn ?? "EmployeeId",
+            _options.EmployeeNameColumn ?? "Name"
+        );
     }
 
     [GeneratedRegex("^[A-Za-z0-9_]+$")]
