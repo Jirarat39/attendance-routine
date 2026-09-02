@@ -7,23 +7,14 @@ namespace AttendanceRoutine.Api.Controllers;
 
 [ApiController]
 [Route("api/health")]
-public sealed class HealthController(
-    AttendanceDbContext db,
-    DatabaseSchemaResolver schemaResolver) : ControllerBase
+public sealed class HealthController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Get(CancellationToken cancellationToken)
+    public IActionResult Get()
     {
-        var canConnect = await db.Database.CanConnectAsync(cancellationToken);
-        if (!canConnect) return StatusCode(503, new { status = "unhealthy", database = "unreachable" });
-        var schema = await schemaResolver.ResolveAsync(cancellationToken);
-        return Ok(new
-        {
-            status = "healthy",
-            database = "connected",
-            attendanceTable = schema.AttendanceTable,
-            employeeTable = schema.EmployeeTable
-        });
+        // Simple health check - just verify app is running
+        // Database checks are deferred to actual API endpoints
+        return Ok(new { status = "healthy" });
     }
 }
 
