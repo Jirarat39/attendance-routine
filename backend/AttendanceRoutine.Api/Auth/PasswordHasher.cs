@@ -3,8 +3,8 @@ using System.Security.Cryptography;
 namespace AttendanceRoutine.Api.Auth;
 
 /// <summary>
-/// PBKDF2-SHA256 password verification compatible with the supplied PasswordHasher.
-/// Stored format: "{iterations}.{saltBase64}.{hashBase64}".
+/// Password verification compatible with bcrypt and PBKDF2-SHA256 hashes.
+/// PBKDF2 stored format: "{iterations}.{saltBase64}.{hashBase64}".
 /// </summary>
 public static class PasswordHasher
 {
@@ -12,6 +12,9 @@ public static class PasswordHasher
     {
         try
         {
+            if (stored.StartsWith("$2", StringComparison.Ordinal))
+                return BCrypt.Net.BCrypt.Verify(password, stored);
+
             var parts = stored.Split('.', 3);
             if (parts.Length != 3
                 || !int.TryParse(parts[0], out var iterations)
