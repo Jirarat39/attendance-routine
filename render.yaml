@@ -12,14 +12,5 @@ services:
       - key: PORT
         value: "10000"
       - key: ConnectionStrings__AttendanceDb
-        fromDatabase:
-          name: attendance-db
-          property: connectionString
+        value: ""
     healthCheckPath: /api/health
-
-databases:
-  - name: attendance-db
-    databaseName: attendance_db
-    user: attendance_user
-    region: oregon
-    plan: starter
