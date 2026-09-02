@@ -8,7 +8,14 @@ using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
+try
+{
+    builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: false);
+}
+catch
+{
+    System.Console.WriteLine("WARNING: Could not load appsettings.Local.json");
+}
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
